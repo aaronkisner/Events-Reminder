@@ -1,25 +1,30 @@
-name: Run Event Checker
+name: Run Reminder Script
 
 on:
-  workflow_dispatch: # מאפשר הרצה ידנית
   schedule:
     - cron: "*/5 * * * *"  # ירוץ כל 5 דקות
+  workflow_dispatch:        # מאפשר הרצה ידנית
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
 
     steps:
+    # שלב 1: הורדת קוד המאגר
     - name: Checkout code
       uses: actions/checkout@v2
 
+    # שלב 2: הגדרת סביבת Python
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: "3.x"
 
+    # שלב 3: התקנת ספריות Python הנדרשות
     - name: Install dependencies
       run: |
         pip install pandas convertdate
-    - name: Run the script
+
+    # שלב 4: הרצת סקריפט ה-Reminder
+    - name: Run Reminder Script
       run: python reminder.py
