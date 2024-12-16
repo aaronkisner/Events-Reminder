@@ -3,7 +3,7 @@ name: Run Event Checker
 on:
   workflow_dispatch: # מאפשר הרצה ידנית
   schedule:
-    - cron: "0 3 * * *"  # ירוץ כל יום בשעה 03:00 (שעון UTC)
+    - cron: "*/5 * * * *"  # ירוץ כל 5 דקות
 
 jobs:
   run-script:
