@@ -3,9 +3,10 @@
 import pandas as pd
 from datetime import datetime, timedelta
 from convertdate import hebrew
+import os
 
-# קריאת הקובץ
-file_path = '/mnt/data/dates.csv'
+# הגדרת נתיב יחסי לקריאת הקובץ
+file_path = os.path.join(os.path.dirname(__file__), 'dates.csv')
 df = pd.read_csv(file_path, encoding='utf-8')
 
 # הנחה: עמודות הקובץ הן 'Hebrew Date' ו-'Event Description'
