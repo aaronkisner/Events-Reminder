@@ -1,0 +1,25 @@
+name: Run Event Checker
+
+on:
+  workflow_dispatch: # מאפשר הרצה ידנית
+  schedule:
+    - cron: "0 3 * * *"  # ירוץ כל יום בשעה 03:00 (שעון UTC)
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        pip install pandas convertdate
+    - name: Run the script
+      run: python check_events.py
