@@ -8,9 +8,19 @@ jobs:
   run-code:
     runs-on: ubuntu-latest
     steps:
+      # הגדרת גרסת Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
       # מוריד את הקוד מהריפו
       - name: Checkout Code
         uses: actions/checkout@v3
+
+      # הדפסת תוכן התיקייה
+      - name: List Repository Files
+        run: ls -R
 
       # התקנת תלות (אם יש requirements.txt)
       - name: Install Dependencies
@@ -21,4 +31,4 @@ jobs:
 
       # הרצת הקובץ
       - name: Run Script
-        run: main.py
+        run: python main.py
